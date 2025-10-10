@@ -5,3 +5,7 @@ sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.original
 sudo chmod a-w /etc/ssh/sshd_config.original
 sudo sshd -t -f /etc/ssh/sshd_config
 sudo systemctl restart ssh.service
+ssh-keygen -t ed25519
+ssh-copy-id $USER@$HOSTNAME
+chmod go-w .ssh/authorized_keys
+sudo journalctl -fu ssh.service
