@@ -1,12 +1,21 @@
 #!/bin/bash
-sudo apt-get update
-sudo apt-get-y install net-tools
-sudo apt-get-y install iw
-sudo apt-get-y install make
-sudo apt-get-y install dkms
-sudo apt-get-y install linux-headers-$(uname -r)
-sudo apt-get-y install tshark
-sudo apt-get install screen 
+echo "perform sudo apt-get update"
+sudo apt-get update||echo "failed: sudo apt-get update"
+echo "perform update"
+sudo apt-get -y install net-tools||echo "failed: sudo apt-get -y install net-tools"
+echo "perform update"
+sudo apt-get -y install iw||echo "failed: sudo apt-get -y install iw"
+echo "perform update"
+sudo apt-get -y install make||echo "failed: apt-get -y install make"
+echo "perform update"
+sudo apt-get -y install dkms||echo "failed: sudo apt-get -y install dkms"
+echo "perform sudo apt-get -y install linux-headers-$(uname -r)"
+sudo apt-get -y install linux-headers-$(uname -r)||echo "failed: sudo apt-get -y install linux-headers-$(uname -r)"
+echo "perform update"
+sudo apt-get -y install tshark||echo "failed: sudo apt-get -y install tshark"
+echo "perform update"
+sudo apt-get install screen||echo "failed: sudo apt-get install screen"
 # sudo adduser $USER wireshark
-sudo chmod +x /usr/bin/dumpcap
-
+echo "perform update"
+sudo chmod +x /usr/bin/dumpcap||echo "failed: sudo apt-get update"
+sudo reboot
