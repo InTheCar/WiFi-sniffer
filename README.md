@@ -5,3 +5,4 @@ I started with a rPi 5 and a Ubuntu Desktop but why should I spend mey newest HW
 a rPi 3 Model B+. 
 
 https://github.com/InTheCar/WiFi-sniffer/blob/main/docs/WiFi%20Sniffer%20ED01x.rtf
+https://github.com/InTheCar/WiFi-sniffer/tree/main/docs
