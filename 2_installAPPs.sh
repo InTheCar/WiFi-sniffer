@@ -1,4 +1,5 @@
 #!/bin/bash
+sudo apt-get update
 sudo apt-get-y install net-tools
 sudo apt-get-y install iw
 sudo apt-get-y install make
