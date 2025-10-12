@@ -39,7 +39,11 @@ echo "Unblock wlan ..."
 sudo rfkill unblock wlan
 echo "Startup $1 ..."
 sudo ifconfig $1 up
-sudo ifconfig $1 down
+sudo rfkill unblock wlan
+echo "Startup $1 ..."
+sudo ifconfig $1 up
+sudo rfkill unblock wlan
+echo "Startup $1 ..."
 sudo ifconfig $1 up
 echo "Setting channel $2 on $1 ..."
 sudo iwconfig $1 channel $2
