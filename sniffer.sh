@@ -1,0 +1,53 @@
+#!/bin/bash
+echo "version 1.0"
+if [[ $EUID -eq 0 ]]; then
+        echo "Don't run the script as root or sudo"
+        exit 1
+fi
+
+if [ $# != 2 ]; then
+	echo "usage:"
+	echo "sniffer [WLAN device] [WiFi channel]"
+	exit
+fi
+while true; do
+    read -p "Do you wish to configure device $1 to channel $2 in monitor mode ? y/n " yn
+    case $yn in
+        [Yy]* ) break;;
+        [Nn]* ) exit;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+while true; do
+    read -p "Delete files in trace directory? y/n " yn
+    case $yn in
+        [Yy]* ) rm ~/tshark_logging_files/*;break;;
+        [Nn]* ) break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+echo ""
+echo "$1 is using this channel:"
+sudo iwlist wlan1 channel |grep Current
+
+echo "Shutdown $1 ..."
+sudo ifconfig $1 down
+echo "Set $1 to monitor mode ..."
+sudo iwconfig $1 mode monitor
+echo "Unblock wlan ..."
+sudo rfkill unblock wlan
+echo "Startup $1 ..."
+sudo ifconfig $1 up
+echo "Setting channel $2 on $1 ..."
+sudo iwconfig $1 channel $2
+echo "$1 is on this channel"
+sudo iwlist wlan1 channel |grep Current
+echo "Creating directory \"~/tshark_logging_files/\" for traces if it not already exists..."
+if  [ ! -d ~/tshark_logging_files ];then
+      mkdir ~/tshark_logging_files
+fi
+# tshark -i wlan1 -w ~/tshark_logging_files/test.pcapng
+tshark -i wlan1 -w ~/tshark_logging_files/$1_channel_$2_.pcapng.gz -b filesize:10000 -b files:10
+
+
