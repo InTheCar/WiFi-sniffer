@@ -4,6 +4,8 @@ echo "perform sudo apt-get update"
 sudo apt-get update||echo "failed: sudo apt-get update"
 echo "perform sudo apt-get -y install net-tools"
 sudo apt-get -y install net-tools||echo "failed: sudo apt-get -y install net-tools"
+echo "perform sudo apt-get -y install wireless-tools"
+sudo apt-get -y install wireless-tools||echo "failed: sudo apt-get -y install wireless-tools"
 echo "perform sudo apt-get -y install iw"
 sudo apt-get -y install iw||echo "failed: sudo apt-get -y install iw"
 echo "perform sudo apt-get -y install make"
@@ -14,7 +16,12 @@ echo "perform sudo apt-get -y install tshark"
 sudo apt-get -y install tshark||echo "failed: sudo apt-get -y install tshark"
 echo "perform sudo apt-get install screen"
 sudo apt-get -y install screen||echo "failed: sudo apt-get install screen"
+echo "perform sudo apt-get -y install dphys-swapfile"
 sudo apt-get -y install dphys-swapfile||echo "failed: sudo apt-get -y install dphys-swapfile"
+echo "perform configuretion of swap file in /etc/dphys-swapfile"
+sudo sed -i -e 's/#CONF_SWAPFILE/CONF_SWAPFILE/g' /etc/dphys-swapfile
+sudo sed -i -e 's/#CONF_SWAPFACTOR/CONF_SWAPFACTOR/g' /etc/dphys-swapfile
+sudo sed -i -e 's/#CONF_MAXSWAP/CONF_MAXSWAP/g' /etc/dphys-swapfile
 echo "perform sudo chmod +x /usr/bin/dumpcap"
 sudo chmod +x /usr/bin/dumpcap||echo "failed: sudo apt-get update"
 duration=$SECONDS

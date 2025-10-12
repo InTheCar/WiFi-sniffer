@@ -48,6 +48,6 @@ if  [ ! -d ~/tshark_logging_files ];then
       mkdir ~/tshark_logging_files
 fi
 # tshark -i wlan1 -w ~/tshark_logging_files/test.pcapng
-tshark -i wlan1 -w ~/tshark_logging_files/$1_channel_$2_.pcapng.gz -b filesize:10000 -b files:10
+sudo tshark -i wlan1 -w ~/tshark_logging_files/$1_channel_$2_.pcapng.gz -b filesize:10000 -b files:10
 
 
