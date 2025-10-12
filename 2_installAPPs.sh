@@ -32,6 +32,9 @@ echo ""
 echo "perform sudo apt-get -y install dphys-swapfile"
 sudo apt-get -y install dphys-swapfile||echo "failed: sudo apt-get -y install dphys-swapfile"
 echo ""
+echo "perform sudo apt-get -y install dphys-swapfile"
+sudo sudo apt-get -y install rfkill||echo "failed: sudo sudo apt-get -y install rfkill"
+echo ""
 echo "perform configuretion of swap file in /etc/dphys-swapfile"
 sudo sed -i -e 's/#CONF_SWAPFILE/CONF_SWAPFILE/g' /etc/dphys-swapfile
 sudo sed -i -e 's/#CONF_SWAPFACTOR/CONF_SWAPFACTOR/g' /etc/dphys-swapfile
