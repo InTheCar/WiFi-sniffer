@@ -54,6 +54,7 @@ if  [ ! -d ~/tshark_logging_files ];then
 fi
 sleep 5s
 # tshark -i wlan1 -w ~/tshark_logging_files/test.pcapng
+tshark -i $1 -c 1
 tshark -i $1 -w ~/tshark_logging_files/$1_channel_$2_.pcapng.gz -b filesize:10000 -b files:10
 
 
