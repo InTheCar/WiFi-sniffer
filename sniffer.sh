@@ -29,7 +29,7 @@ done
 
 echo ""
 echo "$1 is using this channel:"
-sudo iwlist wlan1 channel |grep Current
+sudo iwlist $1 channel |grep Current
 
 echo "Shutdown $1 ..."
 sudo ifconfig $1 down
@@ -48,6 +48,6 @@ if  [ ! -d ~/tshark_logging_files ];then
       mkdir ~/tshark_logging_files
 fi
 # tshark -i wlan1 -w ~/tshark_logging_files/test.pcapng
-sudo tshark -i wlan1 -w ~/tshark_logging_files/$1_channel_$2_.pcapng.gz -b filesize:10000 -b files:10
+tshark -i wlan1 -w ~/tshark_logging_files/$1_channel_$2_.pcapng.gz -b filesize:10000 -b files:10
 
 

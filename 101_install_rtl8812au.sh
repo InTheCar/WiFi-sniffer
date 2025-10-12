@@ -8,5 +8,5 @@ sudo make dkms_install
 duration=$SECONDS
 echo "installation of rtl8812 needed:"
 echo "$((duration / 60)) minutes and $((duration % 60)) seconds elapsed."
-echo "reboot"
+echo "reboot needed"
 
