@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "version 1.0"
+echo "version 2.0"
 if [[ $EUID -eq 0 ]]; then
         echo "Don't run the script as root or sudo"
         exit 1
