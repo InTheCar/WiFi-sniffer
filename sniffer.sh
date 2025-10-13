@@ -16,7 +16,7 @@ if [ $# != 2 ]; then
 	echo "sniffer [WLAN device] [WiFi channel]"
 	exit
 fi
-if [ ! grep -q $1 /proc/net/wireless]; then
+if ! grep -q $1 /proc/net/wireless; then
 echo "Can' find device $1"
 exit -1
 fi
