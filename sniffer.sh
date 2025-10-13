@@ -4,7 +4,9 @@ if [[ $EUID -eq 0 ]]; then
         echo "Don't run the script as root or sudo"
         exit 1
 fi
-
+echo ""
+echo "Available WiFi devices:
+iwconfig | grep SSID
 if [ $# != 2 ]; then
 	echo "usage:"
 	echo "sniffer [WLAN device] [WiFi channel]"
