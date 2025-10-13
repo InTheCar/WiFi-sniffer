@@ -5,8 +5,8 @@ if [[ $EUID -eq 0 ]]; then
         exit 1
 fi
 echo ""
-echo "Available WiFi devices:
-iwconfig | grep SSID
+echo "Available WiFi devices:"
+sudo iwconfig | grep SSID
 if [ $# != 2 ]; then
 	echo "usage:"
 	echo "sniffer [WLAN device] [WiFi channel]"
