@@ -6,11 +6,19 @@ if [[ $EUID -eq 0 ]]; then
 fi
 echo ""
 echo "Available WiFi devices:"
-sudo iwconfig | grep SSID
+cat /proc/net/wireless
+echo ""
+
+
 if [ $# != 2 ]; then
+	echo ""
 	echo "usage:"
 	echo "sniffer [WLAN device] [WiFi channel]"
 	exit
+fi
+if [ ! grep -q $1 /proc/net/wireless]; then
+echo "Can' find device $1"
+exit -1
 fi
 while true; do
     read -p "Do you wish to configure device $1 to channel $2 in monitor mode ? y/n " yn
