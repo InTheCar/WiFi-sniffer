@@ -58,6 +58,7 @@ echo "Set $1 to monitor mode ..."
 sudo iwconfig $1 mode monitor
 status=$?
 counter=$[counter - 1]
+echo $counter
 done
 
 if [ $counter -eq 0 ]; then
