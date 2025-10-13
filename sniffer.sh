@@ -46,6 +46,16 @@ sudo iwconfig $1 channel $2
 echo "Startup $1 ..."
 sudo ifconfig $1 up
 
+echo "Shutdown $1 ..."
+sudo ifconfig $1 down
+
+echo "Startup $1 ..."
+sudo ifconfig $1 up
+
+echo ""
+echo "unblock wlan ..."
+sudo rfkill unblock wlan
+
 echo "$1 is on this channel"
 sudo iwlist $1 channel |grep Current
 echo "Creating directory \"~/tshark_logging_files/\" for traces if it not already exists..."
