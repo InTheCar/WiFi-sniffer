@@ -49,6 +49,12 @@ sudo ifconfig $1 up
 echo "Shutdown $1 ..."
 sudo ifconfig $1 down
 
+echo "Set $1 to monitor mode ..."
+sudo iwconfig $1 mode monitor
+
+echo "Setting channel $2 on $1 ..."
+sudo iwconfig $1 channel $2
+
 echo "Startup $1 ..."
 sudo ifconfig $1 up
 
